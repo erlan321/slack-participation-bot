@@ -2,8 +2,9 @@ env/
 keys.json
 report.csv
 grades
-student_team_dictionary.csv
-grade_requirements.csv
+Example - student_team_dictionary.csv
+Example - grade_requirements.csv
+Example - grades_startDate_to_endDate_channelName.csv
 .idea
 venv/
 .DS_Store
