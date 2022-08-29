@@ -8,9 +8,20 @@ This updated repository was created to give an instructor the ability to measure
  - Use case #1:  In a project-oriented course, teams of students (or individual students) are expected to post periodic "stand ups" about their project, and then also review and comment/advise their fellow students.
  -  Use case #2:  In a course that requires weekly reading assignments (or similar material), and individual students are expected to post their own thoughts on the reading, and then also review and discuss the thoughts of their fellow students.
 
-__Inputs:__
+__Running the Grading tool:__
+```
+$ python bot.py <channel-name> <from-date> <to-date>
+```
+
+For example,
+```
+$ python bot.py siads999_ss22_test_channel 08/22/2022 08/28/2022
+```
+ - channel_name, from_date, to_date:
+  -  The grading tool 
+ - 
  - keys.json
-   - test
+   - This file contains the Bot User Oath token
 
 https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
 
