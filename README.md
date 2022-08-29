@@ -18,7 +18,7 @@ $ python bot.py <channel-name> <from-date> <to-date>
 ```
 For example,
 ```
-$ python bot.py siads999_fa22_course_name 08/22/2022 08/28/2022
+$ python bot.py siads999_ss22_course_name 08/22/2022 08/28/2022
 ```
 __Input Files__
  - __keys.json (required)__
