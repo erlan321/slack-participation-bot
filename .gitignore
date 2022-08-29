@@ -2,6 +2,7 @@ env/
 keys.json
 report.csv
 grades/*
+!grades/.gitkeep
 student_team_dictionary.csv
 grade_requirements.csv
 .idea
