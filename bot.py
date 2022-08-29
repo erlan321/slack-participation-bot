@@ -31,7 +31,6 @@ def get_all_posts_in_channel(channel_name, client, from_date, to_date, max_pages
     page = 1
     from_date = datetime.datetime.strptime(from_date, "%m/%d/%Y").timestamp()
     to_date = datetime.datetime.strptime(to_date, "%m/%d/%Y").timestamp()
-    print(from_date, to_date)
     while keep_looking == True and page < max_pages:
         if page == 1:
            result = client.conversations_history(channel=channel_id,limit=200, oldest=from_date, latest=to_date)
@@ -131,7 +130,7 @@ def convert_activity_to_grade():
 
     # Get the student uniqnames
     if team_graded == 1: #use a manually created student team list
-        team_df = pd.read_csv("course_inputs/student_team_dictionary.csv")
+        team_df = pd.read_csv("student_team_dictionary.csv")
         team_df["uniq_name"] = team_df["email"].str.replace("@umich.edu","", regex=True)
     else: #use an automatically generated user list from the channel
         team_df = get_all_users_in_channel(channel_name, client)
@@ -202,8 +201,8 @@ if __name__ == "__main__":
         sys.exit() #exit if file is missing
 
     # Looks for course-specific arguments
-    if os.path.exists("course_inputs/grade_requirements.csv"):
-        grade_req_df = pd.read_csv("course_inputs/grade_requirements.csv", nrows=1)
+    if os.path.exists("grade_requirements.csv"):
+        grade_req_df = pd.read_csv("grade_requirements.csv", nrows=1)
         min_post = grade_req_df['min_post'].values[0] #the min number of posts required per person (or team)
         post_val = grade_req_df['post_val'].values[0] #the grade point value of each post
         min_reply = grade_req_df['min_reply'].values[0] #the min number of replies required per person
@@ -211,15 +210,15 @@ if __name__ == "__main__":
         team_graded = grade_req_df['team_graded'].values[0] #1 if team graded, 0 if not.  This allows teams to get credit for a single team member's posts.
         del grade_req_df
     else: 
-        print("Required File Missing: course_inputs/grade_requirements.csv" )
+        print("Required File Missing: grade_requirements.csv" )
         sys.exit() #exit if file is missing
 
     # If this course will have team grading, check that the required file exists because it will be used in a subsequent script
     if team_graded == 1:
-        if os.path.exists("course_inputs/student_team_dictionary.csv"):
+        if os.path.exists("student_team_dictionary.csv"):
             pass
         else: 
-            print("Required File Missing: course_inputs/student_team_dictionary.csv" )
+            print("Required File Missing: student_team_dictionary.csv" )
             sys.exit() #exit if file is missing
          
     # Set the client and channel_id for the Slack API    
