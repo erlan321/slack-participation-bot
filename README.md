@@ -9,19 +9,18 @@ This updated repository was created to give an instructor the ability to measure
  -  Use case #2:  In a course that requires weekly reading assignments (or similar material), and individual students are expected to post their own thoughts on the reading, and then also review and discuss the thoughts of their fellow students.
 
 __Running the Grading tool:__
+Once the repo is copied to your local drive and you have created the required input files, the grading tool can be run from a command prompt:
 ```
 $ python bot.py <channel-name> <from-date> <to-date>
 ```
-
 For example,
 ```
-$ python bot.py siads999_ss22_test_channel 08/22/2022 08/28/2022
+$ python bot.py siads999_fa22_course_name 08/22/2022 08/28/2022
 ```
- - channel_name, from_date, to_date:
-  -  The grading tool 
- - 
+__Required Input Files__
  - keys.json
-   - This file contains the Bot User Oath token
+   - This file contains the Bot User Oath token.  The format of this json file is: 
+   - ```{ "token" : "xoxb-123456789123-4567891234567-abc123abc123abc123abc123a” }```
 
 https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
 
