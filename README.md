@@ -1,5 +1,7 @@
 # slack-participation-bot
 A grading tool for student participation on Slack
+  
+  
 This repository is a modified version of an original tool created by Dr. Elle O'Brien of the University of Michigan, whose repository can be found here: https://github.com/elleobrien/participation-bot.  Many thanks to Elle for her help and advice on this project!  
 
 This updated repository was created to further the ability of a Slack Bot to measure student participation in a Slack channel for different types of courses in the University of Michigan Masters in Applied Data Science (MADS) program.  
