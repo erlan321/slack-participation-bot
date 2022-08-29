@@ -1,0 +1,6 @@
+,posts,post_val,replies,reply_val,grade_points,grade_percent,uniq_name,email
+buddy,1,15,3,5,30,100,buddy,buddy@umich.edu
+friend,1,15,2,5,25,83.33,friend,friend@umich.edu
+oldchum,1,15,0,5,15,50,oldchum,oldchum@umich.edu
+goodman,1,15,3,5,30,100,goodman,goodman@umich.edu
+bffl,0,15,3,5,15,50,bffl,bffl@umich.edu
