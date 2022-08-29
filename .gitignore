@@ -2,7 +2,7 @@ env/
 keys.json
 report.csv
 grades/*
-!grades/Example - grades_startDate_to_endDate_channelName
+!grades/Example - grades_startDate_to_endDate_channelName.csv
 student_team_dictionary.csv
 grade_requirements.csv
 .idea
