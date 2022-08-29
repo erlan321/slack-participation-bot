@@ -2,8 +2,8 @@ env/
 keys.json
 report.csv
 grades
-course_inputs/student_team_dictionary.csv
-course_inputs/grade_requirements.csv
+student_team_dictionary.csv
+grade_requirements.csv
 .idea
 venv/
 .DS_Store
