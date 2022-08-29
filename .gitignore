@@ -1,8 +1,8 @@
 env/
 keys.json
 report.csv
-grades/*
-!grades/.gitkeep
+grades/*`
+!grades/Example - grades_startDate_to_endDate_channelName
 student_team_dictionary.csv
 grade_requirements.csv
 .idea
