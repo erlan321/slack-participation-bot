@@ -21,7 +21,8 @@ __Required Input Files__
  - keys.json
    - This file contains the Bot User Oath token.  The format of this json file is: 
    - ```{ "token" : "xoxb-123456789123-4567891234567-abc123abc123abc123abc123a” }```
-
-https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
+   - Instructions for creating a bot to use with this tool and how to add it to your course channel can be found here (needs a Umich email account): https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
+ - grade_requirements.csv
+ - student_team_dictionary
 
 
