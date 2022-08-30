@@ -42,7 +42,7 @@ __Input Files__
 
 __Output__
   - The output of the tool is a .csv summary of Slack channel participation for each student.
-  - This file is output to a ```grades```` folder. 
+  - This file is output to a ```grades``` folder. 
     - The file name is automatically generated based on the ```<channel-name>```, ```<from-date>```, and ```<to-date>```.
     - For example, ```grades_22Aug22_to_28Aug22_siads999_ss22_course_name.csv```.
   - An example is provided in the repository.  It shows the breakdown of posts versus replies, and both a total ```grade_points``` and ```grade_percent```.
