@@ -22,10 +22,11 @@ $ python bot.py siads999_ss22_course_name 08/22/2022 08/28/2022
 ```
 __Input Files__
  - __keys.json (required)__
-   - This file contains the Bot User Oath token.  The format of this json file would look like: 
-   - ```{ "token" : "xoxb-123456789123-4567891234567-abc123abc123abc123abc123a” }```
-   - Instructions for creating a bot to use with this tool and how to add it to your course channel can be found here (needs a Umich email account to view): https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
+   - You must create a keys.json file in the main folder.
+   - This file contains the Bot User OAuth token.  The format of this json file would look like: ```{ "token" : "xoxb-123456789123-4567891234567-abc123abc123abc123abc123a” }```
+   - Instructions for creating a bot to use with this tool, and finding its OAuth token, and how to add it to your course channel can be found here (needs a Umich email account to view): https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
  - __grade_requirements.csv (required)__
+   - You must create a grade_requirements.csv file in the main folder.
    - This file sets some values needed for grading.  An example is provided in the repository.
    - ```team_graded``` should be 1 if the students are in teams (like in a project-focused course) or 0 if individually graded.
     - If set to 1, a student_team_directory needs to be created (see below).
@@ -44,7 +45,7 @@ __Output__
     - The file name is automatically generated based on the ```<channel-name>```, ```<from-date>```, and ```<to-date>```.
     - For example, ```grades_22Aug22_to_28Aug22_siads999_ss22_course_name.csv```.
   - An example is provided in the repository.  It shows the breakdown of posts versus replies, and both a total ```grade_points``` and ```grade_percent```.
-  - When manually entering these grades into Coursera, the instructor might find it helpful to sort by ```uniq_name``` or ```email``` and depending on what page of the Grading menu you are using on Coursera, you can either enter the ```grade_points``` or ```grade_percent```.
+  - When manually entering these grades into Coursera, the instructor might find it helpful to sort by ```uniq_name``` or ```email```, and depending on what page of the Grading menu you are using on Coursera you can either enter the ```grade_points``` or ```grade_percent```.
 
 
 
