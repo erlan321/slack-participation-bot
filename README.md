@@ -34,9 +34,9 @@ __Input Files__
    - _Note:  For team grading, we allow for team posts (i.e. only 1 team member needs to post for all team members), but we assume that replies will always expected to be made individually._
    - ```post_val``` and ```reply_val``` are the grade point value for each post and reply.  Continuing the example above, perhaps we want the single post to count for half the grade and the replies to count for the other half, we could set the grade point value of posts to 15 points and the value of replies to 5 points apiece.  This is up to the discretion of the instructor.
  - __student_team_dictionary.csv (optional)__
-   - This file is only needed if ``team_graded``` is set to 1.  If this is the case, the tool will need to see team assignments for each student.  
-   - The example provided in the repository is based off of a download from Coursera of the students in the class, but the only important columns are ```email``` and ```team```.  As long as this file has these two columns filled out, the tool will be able to run successfully.  
-   - _Note that the ```email``` column contains the Umich email.  This will allow our Slack Bot to match each student's uniqname to their identity in the Slack channel._
+   - This file is only needed if ```team_graded``` is set to 1.  If this is the case, the tool will need to see team assignments for each student.  
+   - The example provided in the repository is based off one possible format for downloading student data from the Coursera grading menu (where instructors can see either the whole gradebook or grades for individual assignments.  BUT, we want to point out that the only important columns needed are ```email``` and ```team```.  As long as this file has these two columns filled out, the tool will be able to run successfully.  
+   - The ```email``` column contains the Umich email.  This information allows our Slack Bot to match each student's Coursera identity to their Slack channel identity.
 
 
 
