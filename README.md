@@ -35,8 +35,16 @@ __Input Files__
    - ```post_val``` and ```reply_val``` are the grade point value for each post and reply.  Continuing the example above, perhaps we want the single post to count for half the grade and the replies to count for the other half, we could set the grade point value of posts to 15 points and the value of replies to 5 points apiece.  This is up to the discretion of the instructor.
  - __student_team_dictionary.csv (optional)__
    - This file is only needed if ```team_graded``` is set to 1.  If this is the case, the tool will need to see team assignments for each student.  
-   - The example provided in the repository is based off one possible format for downloading student data from the Coursera grading menu (where instructors can see either the whole gradebook or grades for individual assignments.  BUT, we want to point out that the only important columns needed are ```email``` and ```team```.  As long as this file has these two columns filled out, the tool will be able to run successfully.  
-   - The ```email``` column contains the Umich email.  This information allows our Slack Bot to match each student's Coursera identity to their Slack channel identity.
+   - The example provided in the repository is based off one possible format for downloading student data from the Coursera grading menu (where instructors can see either the whole gradebook or grades for individual assignments).  BUT, we want to point out that the only important columns needed are ```email``` and ```team```, _all other columns are superflous_.  As long as this file has ```email``` and ```team``` columns, the tool will be able to run successfully.  
+   - The ```email``` column contains the Umich email, which is what links each student's Coursera identity to their Slack channel identity.
+
+__Output__
+  - The output of the tool is a .csv summary of Slack channel participation for each student.
+  - This file is output to a ```grades```` folder. 
+    - The file name is automatically generated based on the ```<channel-name>```, ```<from-date>```, and ```<to-date>```.
+    - For example, ```grades_22Aug22_to_28Aug22_siads999_ss22_course_name.csv```.
+  - An example is provided in the repository.  It shows the breakdown of posts versus replies, and both a total ```grade_points``` and ```grade_percent```.
+  - When manually entering these grades into Coursera, the instructor might find it helpful to sort by ```uniq_name``` or ```email``` and depending on what page of the Grading menu you are using on Coursera, you can either enter the ```grade_points``` or ```grade_percent```.
 
 
 
