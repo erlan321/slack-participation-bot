@@ -23,7 +23,8 @@ $ python bot.py siads999_ss22_course_name 08/22/2022 08/28/2022
 __Input Files__
  - __keys.json (required)__
    - You must create a keys.json file in the main folder.
-   - This file contains the Bot User OAuth token.  The format of this json file would look like: ```{ "token" : "xoxb-123456789123-4567891234567-abc123abc123abc123abc123a” }```
+   - This file contains the Bot User OAuth token.  The format of this json file would look like: 
+     - ```{ "token" : "xoxb-123456789123-4567891234567-abc123abc123abc123abc123a” }```
    - Instructions for creating a bot to use with this tool, and finding its OAuth token, and how to add it to your course channel can be found here (needs a Umich email account to view): https://docs.google.com/document/d/1W4K4V7e0BbWRazkqWqvh9Lz-9JkKXVJrA3dTXoRZYAk/edit?usp=sharing
  - __grade_requirements.csv (required)__
    - You must create a grade_requirements.csv file in the main folder.
