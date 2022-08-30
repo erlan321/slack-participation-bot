@@ -47,6 +47,7 @@ __Output__
     - For example, ```grades_22Aug22_to_28Aug22_siads999_ss22_course_name.csv```.
   - An example is provided in the repository.  It shows the breakdown of posts versus replies, and both a total ```grade_points``` and ```grade_percent```.
   - When manually entering these grades into Coursera, the instructor might find it helpful to sort by ```uniq_name``` or ```email```, and depending on what page of the Grading menu you are using on Coursera you can either enter the ```grade_points``` or ```grade_percent```.
+  - This output file is also meant to give transparency to how the grade is calculated, in order to make it easier for the instructor to make any adjustments later (i.e. for students that have an extension).
 
 
 
