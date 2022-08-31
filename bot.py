@@ -138,9 +138,12 @@ def convert_activity_to_grade():
         team_df["team"] = team_df["uniq_name"] #makes every person a member of their own "team"
 
     # For each group that posted a standup, give everyone in the group credit, initiating a score of zero
-    standup_post_scores = {el:0 for el in team_df["uniq_name"].values}
+    standup_post_counts = {el:0 for el in team_df["uniq_name"].values} #raw counts, for debugging
+    standup_post_scores = {el:0 for el in team_df["uniq_name"].values} #score min(raw count, min required count)
 
-    slack_activity = pd.read_csv("report.csv") #read in the slack channel activity
+
+    #slack_activity = pd.read_csv("report.csv") #read in the slack channel activity
+    slack_activity = participation_df.copy()
     posts = slack_activity[slack_activity["context"]=="post"]
 
     for poster in posts["uniq_name"].values:
@@ -149,19 +152,22 @@ def convert_activity_to_grade():
             teammates = team_df[team_df["team"]==team_id[0]]["uniq_name"].values
             for student in teammates:
                 score = posts[posts.uniq_name.isin(teammates)]["count"].max()
-                standup_post_scores[student] = min(score, min_post)
+                standup_post_counts[student] = score #raw counts, for debugging
+                standup_post_scores[student] = min(score, min_post)  #score min(raw count, min required count)
         else:
             print("Team not found for %s" % poster) 
 
-    # What about comments?
-    comment_scores = {el:0 for el in team_df["uniq_name"].values} #initiate score at zero
+    # What about comments? initiate score at zero
+    comment_counts = {el:0 for el in team_df["uniq_name"].values} #raw counts, for debugging
+    comment_scores = {el:0 for el in team_df["uniq_name"].values} #score min(raw count, min required count)
     comments = slack_activity[slack_activity["context"]=="reply"]
 
     #for student in more_than_two_comments["uniq_name"].values:
     for student in comments["uniq_name"].values:
         if student in comment_scores:
             score = comments[comments.uniq_name==student]["count"].values[0]
-            comment_scores[student] = min(score, min_reply)
+            comment_counts[student] = score #raw counts, for debugging
+            comment_scores[student] = min(score, min_reply) #score min(raw count, min required count)
         else:
             print("Did not find %s in student list." % student) 
 
@@ -172,8 +178,12 @@ def convert_activity_to_grade():
 
     # Turn it into a dataframe
     total_score_df = pd.DataFrame.from_dict(standup_post_scores, orient="index",columns=["posts"])
+    #total_score_df = total_score_df.merge(pd.DataFrame.from_dict(standup_post_counts, orient="index",columns=["posts_raw"]),how="left",left_index=True, right_index=True)
+    #total_score_df["min_post"] = min_post
     total_score_df["post_val"] = post_val
     total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_scores, orient="index",columns=["replies"]),how="left",left_index=True, right_index=True)
+    #total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_counts, orient="index",columns=["replies_raw"]),how="left",left_index=True, right_index=True)
+    #total_score_df["min_reply"] = min_reply
     total_score_df["reply_val"] = reply_val
     total_score_df = total_score_df.merge(pd.DataFrame.from_dict(total_score, orient="index",columns=["grade_points"]),how="left",left_index=True, right_index=True)
     total_score_df['grade_percent'] = 100 * (total_score_df["grade_points"] / (min_post*post_val+min_reply*reply_val))
@@ -181,6 +191,8 @@ def convert_activity_to_grade():
     total_score_df['uniq_name'] = total_score_df.index
     total_score_df["email"] = total_score_df["uniq_name"] + "@umich.edu"
     total_score_df.reset_index()
+    
+    #print(total_score_df) #For debugging
 
     return total_score_df  
 
@@ -230,8 +242,7 @@ if __name__ == "__main__":
     participation_df = make_post_and_reply_summary(messages)
 
     # Write to a .csv file
-    participation_df.to_csv("report.csv")
-
+    #participation_df.to_csv("report.csv") #uncomment for debugging/visualize raw counts
 
     # Create and export grades
     grade_filename = "_".join([
