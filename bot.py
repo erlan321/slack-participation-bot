@@ -190,8 +190,8 @@ def convert_activity_to_grade():
     total_score_df['grade_percent'] = total_score_df['grade_percent'].astype("float").round(2)
     total_score_df['uniq_name'] = total_score_df.index
     total_score_df["email"] = total_score_df["uniq_name"] + "@umich.edu"
-    total_score_df.reset_index()
-    
+    total_score_df = total_score_df.sort_values(by=['uniq_name'], ascending=True)  
+
     #print(total_score_df) #For debugging
 
     return total_score_df  
