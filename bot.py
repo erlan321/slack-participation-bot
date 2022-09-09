@@ -178,12 +178,12 @@ def convert_activity_to_grade():
 
     # Turn it into a dataframe
     total_score_df = pd.DataFrame.from_dict(standup_post_scores, orient="index",columns=["posts"])
-    total_score_df = total_score_df.merge(pd.DataFrame.from_dict(standup_post_counts, orient="index",columns=["posts_raw"]),how="left",left_index=True, right_index=True)
-    total_score_df["min_post"] = min_post
+    total_score_df = total_score_df.merge(pd.DataFrame.from_dict(standup_post_counts, orient="index",columns=["posts_raw"]),how="left",left_index=True, right_index=True) #uncomment for more detailed activity .csv
+    total_score_df["min_post"] = min_post #uncomment for more detailed activity .csv
     total_score_df["post_val"] = post_val
     total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_scores, orient="index",columns=["replies"]),how="left",left_index=True, right_index=True)
-    total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_counts, orient="index",columns=["replies_raw"]),how="left",left_index=True, right_index=True)
-    total_score_df["min_reply"] = min_reply
+    total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_counts, orient="index",columns=["replies_raw"]),how="left",left_index=True, right_index=True) #uncomment for more detailed activity .csv
+    total_score_df["min_reply"] = min_reply #uncomment for more detailed activity .csv
     total_score_df["reply_val"] = reply_val
     total_score_df = total_score_df.merge(pd.DataFrame.from_dict(total_score, orient="index",columns=["grade_points"]),how="left",left_index=True, right_index=True)
     total_score_df['grade_percent'] = 100 * (total_score_df["grade_points"] / (min_post*post_val+min_reply*reply_val))
