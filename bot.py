@@ -178,19 +178,20 @@ def convert_activity_to_grade():
 
     # Turn it into a dataframe
     total_score_df = pd.DataFrame.from_dict(standup_post_scores, orient="index",columns=["posts"])
-    #total_score_df = total_score_df.merge(pd.DataFrame.from_dict(standup_post_counts, orient="index",columns=["posts_raw"]),how="left",left_index=True, right_index=True) #uncomment for more detailed activity .csv
-    #total_score_df["min_post"] = min_post #uncomment for more detailed activity .csv
+    total_score_df = total_score_df.merge(pd.DataFrame.from_dict(standup_post_counts, orient="index",columns=["posts_raw"]),how="left",left_index=True, right_index=True) #uncomment for more detailed activity .csv
+    total_score_df["min_post"] = min_post #uncomment for more detailed activity .csv
     total_score_df["post_val"] = post_val
     total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_scores, orient="index",columns=["replies"]),how="left",left_index=True, right_index=True)
-    #total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_counts, orient="index",columns=["replies_raw"]),how="left",left_index=True, right_index=True) #uncomment for more detailed activity .csv
-    #total_score_df["min_reply"] = min_reply #uncomment for more detailed activity .csv
+    total_score_df = total_score_df.merge(pd.DataFrame.from_dict(comment_counts, orient="index",columns=["replies_raw"]),how="left",left_index=True, right_index=True) #uncomment for more detailed activity .csv
+    total_score_df["min_reply"] = min_reply #uncomment for more detailed activity .csv
     total_score_df["reply_val"] = reply_val
     total_score_df = total_score_df.merge(pd.DataFrame.from_dict(total_score, orient="index",columns=["grade_points"]),how="left",left_index=True, right_index=True)
     total_score_df['grade_percent'] = 100 * (total_score_df["grade_points"] / (min_post*post_val+min_reply*reply_val))
     total_score_df['grade_percent'] = total_score_df['grade_percent'].astype("float").round(2)
     total_score_df['uniq_name'] = total_score_df.index
     total_score_df["email"] = total_score_df["uniq_name"] + "@umich.edu"
-    total_score_df = total_score_df.sort_values(by=['uniq_name'], ascending=True)  
+    total_score_df = total_score_df.sort_values(by=['uniq_name'], ascending=True)  #sort by uniq_name
+    total_score_df = total_score_df[['uniq_name','email','grade_points','grade_percent','posts','replies','post_val','reply_val','min_post','min_reply','posts_raw','replies_raw']] #rearrange columns
 
     #print(total_score_df) #For debugging
 
